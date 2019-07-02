@@ -7,14 +7,16 @@ Template engines are widely used by web applications to present dynamic data via
 
 Template Injection can arise both through developer error, and through the intentional exposure of templates in an attempt to offer rich functionality, as commonly done by wikis, blogs, marketing applications and content management systems. Intentional template injection is such a common use-case that many template engines offer a 'sandboxed' mode for this express purpose. This paper defines a methodology for detecting and exploiting template injection, and shows it being applied to craft RCE zerodays for two widely deployed enterprise web applications. Generic exploits are demonstrated for five of the most popular template engines, including escapes from sandboxes whose entire purpose is to handle user-supplied templates in a safe way.
 
-For a slightly less dry account of this research, you may prefer to watch my Black Hat USA presentation on this topic. This research is also available as printable whitepaper.
+Уязвимость часто возникает из-за того, что разработчики дают возможность пользователю изменять шаблон (некоторые шаблонизаторы предлагают безопасный режим для этих целей).
+Все функции, которые используют данные введенные пользователем, могут быть уязвимы, в том числе вики-страницы, ревью и комментарии. Также, причиной уязвимости может быть то, что пользовательские данные вставляются непосредственно в шаблон.
 
+https://defcon.ru/web-security/3840/
 ## Классификация
 Если существует какая-то классификация уязвимости/атаки - напишите о ней. Например, могут быть разные техники эксплуатации
 
 ## Условия
 - ОС: если проблема специфична для определенной ОС
-- язык: если проблема специфичная для определенных языков
+- язык: если проблема специфичная для определенных языков - специфична для flask, jinja2
 - компоненты: какие компоненты подвержены проблеме. Это могут быть библиотеки, базы данных, фреймворки, брокеры очередей и т.д.
 - настройки: может есть какие-то специфичные настройки
 
