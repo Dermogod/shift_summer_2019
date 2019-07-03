@@ -6,7 +6,9 @@
 </head>
 <body>
 <h1>SSTI</h1>
-<p>Unsafe: <a {{href="unsafe?whoami=Ronnie" |e}} >link</a></p>
+{% raw %}
+<p>Unsafe: <a href="unsafe?whoami=Ronnie" >link</a></p>
+{% endraw %}
 <p>Safe: <a href="safe?whoami=Ronnie">link</a></p>)
 </body>
 </html>
