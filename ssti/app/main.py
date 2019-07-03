@@ -17,7 +17,9 @@ def unsafe_ssti():
 	if person['name'] is None:
 		person['name'] = 'world!'
 
-	body = "Name: %s" % {{ person['name'] }}
+	body = '''<title>No Injection Allowed!</title>
+                <a href={{ url_for('hello_xss')}}?person={{person |e}}>
+                Click here for a welcome message</a>'''
 
 	return render_template_string(body, person=person)
 
