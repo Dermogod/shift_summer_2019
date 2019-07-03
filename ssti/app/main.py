@@ -12,7 +12,7 @@ def hello():
 @app.route("/unsafe")
 def unsafe_ssti():
 
-	person ={{ {'name': request.args.get('whoami'), 'secret': 'You win, master jedi!'} |e }}
+	person = {'name': request.args.get('whoami'), 'secret': 'You win, master jedi!'} 
 
 	if person['name'] is None:
 		person['name'] = 'world!'
