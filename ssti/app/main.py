@@ -1,4 +1,5 @@
 #jinja2:variable_start_string:'[%' , variable_end_string:'%]'
+
 from flask import Flask, request, render_template, render_template_string
 app = Flask(__name__)
 
