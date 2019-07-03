@@ -12,13 +12,15 @@ def hello():
 @app.route("/unsafe")
 def unsafe_ssti():
 
-	template = '''<title>No Injection Allowed!</title>
-		<a href={{ url_for('hello_xss')}}?name={{ name |e}}>
-		Click here for a welcome message</a>'''
-	name = "world"
-	if request.args.get('name'):
-		name = request.args.get('name')
-	return render_template_string(template, name=name)
+	person = {'name': request.args.get('whoami'), 'secret': 'You win, master jedi!'}
+
+	if person['name'] is None:
+		person['name'] = 'world!'
+
+	body = "Name: %s" % person['name']
+
+	return render_template_string(body, person=person)
+
 
 
 if __name__ == '__main__':
