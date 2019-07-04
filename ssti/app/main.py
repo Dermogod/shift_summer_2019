@@ -25,7 +25,9 @@ def unsafe_ssti():
 @app.route('/safe_ssti')
 def safe_ssti():
 	client_data=request.get_data(as_text=True)
-	return render_template_string('thisisafe', client_data=client_data)
+	print(client_data)
+	body = "Name: %s" % client_data
+	return render_template_string(body, client_data=client_data)
 
 
 if __name__ == '__main__':
