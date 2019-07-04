@@ -13,6 +13,10 @@ def hello():
 def unsafe_ssti():
 
 	person = {'name': request.args.get('whoami'), 'secret': 'You win, master jedi!'}
+	blacklist = ["__class__"]
+	for bad_string in blacklist:
+        	if  bad_string in exploit:
+        	return "HACK ATTEMPT {}".format(bad_string), 400
 
 	if person['name'] is None:
 		person['name'] = 'world!'
@@ -20,8 +24,6 @@ def unsafe_ssti():
 	body =  " Name: %s " % person['name']
 
 	return render_template_string( body, person=person)
-
-blacklist = ["__class__"]
 
 if __name__ == '__main__':
 	app.run(host='0.0.0.0', debug=True, port=80)
