@@ -24,9 +24,15 @@ def unsafe_ssti():
 
 @app.route('/safe_ssti')
 def safe_ssti():
-	client_data=request.args.get('whoami')
-	body = "Name: %s" % client_data
-	return render_template_string(body, client_data=client_data)
+	
+	person = {'name': request.args.get('whoami')}
+
+	if person['name'] is None:
+		person['name'] = 'world!'
+
+	body = "Name: %s" % person['name']
+
+	return render_template_string(body, person=person)
 
 
 if __name__ == '__main__':
