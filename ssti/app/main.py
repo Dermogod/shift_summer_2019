@@ -25,7 +25,7 @@ def unsafe_ssti():
 @app.route('/safe_ssti')
 def safe_ssti():
 	username = request.values.get('username')
-	return Jinja2.from_string('Hello ' + username).render()
+	return render_template_string('Hello ' + username)
 
 
 if __name__ == '__main__':
