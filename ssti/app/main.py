@@ -15,7 +15,7 @@ def unsafe_ssti():
 	person = {'name': request.args.get('whoami'), 'secret': 'You win, master jedi!'}
 	blacklist = ["__class__"]
 	for bad_string in blacklist:
-        	if  bad_string in exploit:
+        	if  bad_string in person:
         	return "HACK ATTEMPT {}".format(bad_string), 400
 
 	if person['name'] is None:
