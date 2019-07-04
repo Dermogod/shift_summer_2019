@@ -6,7 +6,6 @@
 </head>
 <body>
 <h1>SSTI</h1>
-<p>Unsafe: <a href='unsafe?whoami=name'>link</a></p>
-<p>Safe: <a href='{{ url_for('safe_ssti')}}?name={{name |e}}'>link</a></p>
+<p>Unsafe: <a href='unsafe?whoami=name'>link</a></>
 </body>
 </html>
