@@ -24,7 +24,7 @@ def unsafe_ssti():
 @app.route('/safe_ssti')
 def safe_ssti():
 	name = "world"
-	template = input() # 'unsafe' file extension... totally legit.
+        template = 'this is safe: '
 	if request.args.get('name'):
 		name = request.args.get('name')
 	return render_template_string(template, name=name)
