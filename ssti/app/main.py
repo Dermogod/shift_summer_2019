@@ -17,10 +17,10 @@ def unsafe_ssti():
 	if person['name'] is None:
 		person['name'] = 'world!'
 
-	body =  "{% autoescape %} Name: %s {% endautoescape %}" % person['name']
+	body =  " Name: %s " % person['name']
 
-	return render_template_string(body, person=person)
-
+	print (render_template_string(body, person=person))
+	return 1
 
 if __name__ == '__main__':
 	app.run(host='0.0.0.0', debug=True, port=80)
