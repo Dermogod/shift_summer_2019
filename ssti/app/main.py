@@ -19,8 +19,7 @@ def unsafe_ssti():
 
 	body =  " Name: %s " % person['name']
 
-	print (render_template_string(body, person=person))
-	return 1
+	return render_template('index1.html')
 
 if __name__ == '__main__':
 	app.run(host='0.0.0.0', debug=True, port=80)
