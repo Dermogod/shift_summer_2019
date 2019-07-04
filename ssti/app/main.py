@@ -1,5 +1,5 @@
-
 from flask import Flask, request, render_template, render_template_string
+
 app = Flask(__name__)
 
 
@@ -12,7 +12,7 @@ def hello():
 @app.route("/unsafe")
 def unsafe_ssti():
 
-    person = {'name': request.args.get('whoami'), 'secret': 'You win, master jedi!'} 
+	person = {'name': request.args.get('whoami'), 'secret': 'You win, master jedi!'}
 
 	if person['name'] is None:
 		person['name'] = 'world!'
@@ -21,10 +21,8 @@ def unsafe_ssti():
 
 	return render_template_string(body, person=person)
 
-@app.route("/safe")
 def safe_ssti():
-	
-	person = {'name': request.args.get('whoami'), 'secret': 'You win, master jedi!'} 
+    person = {'name': request.args.get('whoami'), 'secret': 'You win, master jedi!'}
 
 	if person['name'] is None:
 		person['name'] = 'world!'
