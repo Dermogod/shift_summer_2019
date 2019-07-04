@@ -21,14 +21,14 @@ def unsafe_ssti():
 
 	return render_template_string(body, person=person)
 
+
 def safe_ssti():
-	template = '''<title>No Injection Allowed!</title>
-		<a href={{ url_for('safe_ssti')}}?name={{ name |e}}>
-		Click here for a welcome message</a>'''
 	name = "world"
+	template = 'hello.unsafe' # 'unsafe' file extension... totally legit.
 	if request.args.get('name'):
 		name = request.args.get('name')
-	return render_template_string(template, name=name)
+	return render_template(template, name=name)
+
 
 if __name__ == '__main__':
 	app.run(host='0.0.0.0', debug=True, port=80)
