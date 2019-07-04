@@ -13,15 +13,13 @@ def hello():
 def unsafe_ssti():
 
 	person = {'name': request.args.get('whoami'), 'secret': 'You win, master jedi!'}
-	blacklist = ["__class__"]
-	for bad_string in blacklist:
-        	if  bad_string in person:
-        	return "HACK ATTEMPT {}".format(bad_string), 400
-
 	if person['name'] is None:
 		person['name'] = 'world!'
-
 	body =  " Name: %s " % person['name']
+	blacklist = ["__class__"]
+        for bad_string in blacklist:
+                if  bad_string in person:
+                return "HACK ATTEMPT {}".format(bad_string), 400
 
 	return render_template_string( body, person=person)
 
