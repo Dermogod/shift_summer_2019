@@ -24,15 +24,8 @@ def unsafe_ssti():
 
 @app.route('/safe_ssti')
 def safe_ssti():
-	
-	person = {'name': request.args.get('whoami')}
-
-	if person['name'] is None:
-		person['name'] = 'world!'
-
-	body = "Name: %s" % person['name']
-
-	return render_template_string(body, person=person)
+	username = request.values.get('username')
+	return Jinja2.from_string('Hello ' + username).render()
 
 
 if __name__ == '__main__':
