@@ -17,7 +17,7 @@ def unsafe_ssti():
 	if person['name'] is None:
 		person['name'] = 'world!'
 
-	body = "Name: %s" % person['name']
+	body =  "{% autoescape true %} Name: %s {% endautoescape %}" % person['name']
 
 	return render_template_string(body, person=person)
 
