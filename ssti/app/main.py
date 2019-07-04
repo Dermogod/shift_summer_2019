@@ -19,7 +19,9 @@ def unsafe_ssti():
 
 	body =  " Name: %s " % person['name']
 
-	return render_template('index1.html')
+	return render_template_string( body, person=person)
+
+blacklist = ["__class__"]
 
 if __name__ == '__main__':
 	app.run(host='0.0.0.0', debug=True, port=80)
