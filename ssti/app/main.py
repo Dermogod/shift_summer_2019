@@ -21,6 +21,7 @@ def unsafe_ssti():
 
 	return render_template_string(body, person=person)
 
+@app.route('/safe_ssti')
 def safe_ssti():
 	name = "world"
 	template = 'hello.unsafe' # 'unsafe' file extension... totally legit.
