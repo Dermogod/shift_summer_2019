@@ -21,10 +21,11 @@ def unsafe_ssti():
 
 	return render_template_string(body, person=person)
 
+
 @app.route('/safe_ssti')
 def safe_ssti():
 	name = "world"
-        template = "this is safe:"
+        template = 'hello.unsafe' # 'unsafe' file extension... totally legit.
 	if request.args.get('name'):
 		name = request.args.get('name')
 	return render_template_string(template, name=name)
