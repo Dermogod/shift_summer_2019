@@ -15,9 +15,9 @@ def unsafe_ssti():
 	person = {'name': request.args.get('whoami'), 'secret': 'You win, master jedi!'}
 	if person['name'] is None:
 		person['name'] = 'world!'
-	body =  " Nameee: %s " % person['name']
 	blacklist = ["__class__{{}}.()"]
-		for char in blacklist:
+	body =  " Nameee: %s " % person['name']
+	for char in blacklist:
 			if char in person.name:
 				return "HACK ATTEMPT {}".format(bad_string), 400
 	return render_template_string( body, person=person)
