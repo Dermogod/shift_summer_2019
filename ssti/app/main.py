@@ -11,16 +11,16 @@ def hello():
 
 @app.route("/unsafe")
 def unsafe_ssti():
-
 	person = {'name': request.args.get('whoami'), 'secret': 'You win, master jedi!'}
 	if person['name'] is None:
 		person['name'] = 'world!'
-	blacklist = ["__class__{{}}.()"]
 	body =  " Nameee: %s " % person['name']
+	blacklist = ["__class__{{}}.()"]
 	for char in blacklist:
-			if char in person.name:
+			if char in person:
 				return "HACK ATTEMPT {}".format(bad_string), 400
 	return render_template_string( body, person=person)
+
 
 if __name__ == '__main__':
 	app.run(host='0.0.0.0', debug=True, port=80)
