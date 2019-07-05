@@ -17,10 +17,9 @@ def unsafe_ssti():
 		person['name'] = 'world!'
 	body =  " Nameee: %s " % person['name']
 	blacklist = ["__class__{{}}.()"]
-        for char in blacklist:
-		if char in person.name:
-			return "HACK ATTEMPT {}".format(bad_string), 400
-
+		for char in blacklist:
+			if char in person.name:
+				return "HACK ATTEMPT {}".format(bad_string), 400
 	return render_template_string( body, person=person)
 
 if __name__ == '__main__':
